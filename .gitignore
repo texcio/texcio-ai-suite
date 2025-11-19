@@ -1,0 +1,22 @@
+# dependencies
+**/node_modules
+**/.pnp
+**/.pnp.js
+
+# nextjs build
+**/.next
+**/out
+
+# python
+**/__pycache__
+**/*.pyc
+**/.venv
+**/venv
+
+# misc
+.DS_Store
+.env
+.env.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
