@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Texcio AI Suite  
+Modern Full-Stack AI Productivity Platform built with **Next.js 16**, **OpenAI API**, and **ShadCN UI**.
 
-## Getting Started
+Texcio AI Suite provides a collection of AI-powered tools including text summarization, image generation, workflow agents, user settings, and billing management — packaged inside a clean and responsive dashboard UI.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🔹 Core AI Tools
+- **AI Summarizer** – Summarizes long text into short, readable summaries.
+- **AI Image Generator** – Generates images from text prompts using OpenAI Image API (GPT-Image).
+- **AI Agents (Workflow)** – Create, manage and run automated AI workflows *(UI ready)*.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🔹 Dashboard & UX
+- Clean sidebar navigation  
+- Sticky navbar with notifications & user avatar  
+- Fully responsive layout  
+- Modern B2B SaaS design (ShadCN + TailwindCSS)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🔹 User Pages
+- Profile Page  
+- Settings Page  
+- Billing Page  
+- Agents Page  
 
-## Learn More
+### 🔹 Developer Experience
+- Next.js 16 + Turbopack  
+- App Router  
+- TypeScript  
+- Reusable UI components  
+- Organized folder structure  
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Layer | Technology |
+|------|------------|
+| Frontend | Next.js 16, React, TypeScript |
+| UI | ShadCN UI, TailwindCSS |
+| AI | OpenAI API (GPT-4o Mini, GPT-Image-1) |
+| State mgmt | React Hooks |
+| Icons | Lucide Icons |
+| Deployment | Vercel / AWS Amplify / Netlify |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📁 Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
