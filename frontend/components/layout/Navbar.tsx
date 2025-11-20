@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <header className="h-16 border-b bg-white/70 backdrop-blur-md flex items-center justify-between px-4 sticky top-0 z-50">
-      
+
       {/* Left section */}
       <div className="flex items-center gap-3">
         {/* Mobile sidebar toggle */}
@@ -27,11 +27,13 @@ export default function Navbar() {
         >
           <Menu className="w-6 h-6" />
         </button>
-
-        {/* Logo */}
-        <div className="font-bold text-lg tracking-tight">
-          Texcio <span className="text-blue-600">AI Suite</span>
-        </div>
+        <Image
+          src="/logo.png"
+          alt="Texcio AI Suite"
+          width={150}
+          height={40}
+          priority
+        /> ̰
       </div>
 
       {/* Right section */}
@@ -46,7 +48,7 @@ export default function Navbar() {
         {/* User dropdown */}
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Image
+            <img
               src="https://api.dicebear.com/7.x/notionists/svg?seed=texcio"
               width={32}
               height={32}

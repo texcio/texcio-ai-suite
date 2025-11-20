@@ -8,11 +8,20 @@ import {
   User,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Sidebar() {
   return (
     <aside className="w-64 h-screen bg-white border-r p-4 flex flex-col">
-      <h1 className="text-xl font-bold mb-6">Texcio AI Suite</h1>
+      <div className="flex items-center gap-2 mb-6">
+        <Image 
+          src="/logo.png"
+          alt="Texcio AI Suite"
+          width={140}
+          height={40}
+          priority
+        />
+      </div>
 
       <nav className="flex-1 space-y-2">
         <Link href="/dashboard" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-md">
