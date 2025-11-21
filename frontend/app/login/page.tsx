@@ -125,7 +125,7 @@ export default function LoginPage() {
           <p className="text-center text-gray-300 mt-6">
             Don’t have an account?{" "}
             <a
-              href="/auth/register"
+              href="/register"
               className="text-blue-400 hover:text-blue-300 transition"
             >
               Sign Up
@@ -133,7 +133,7 @@ export default function LoginPage() {
           </p>
 
           <p className="text-center text-gray-400 mt-4 text-sm">
-            <a href="/auth/forgot-password" className="hover:text-gray-200">
+            <a href="/forgot-password" className="hover:text-gray-200">
               Forgot password?
             </a>
           </p>
