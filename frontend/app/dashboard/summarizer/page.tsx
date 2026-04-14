@@ -7,39 +7,41 @@ export default function SummarizerPage() {
   const [input, setInput] = useState("");
   const [summary, setSummary] = useState("");
 
+  // Scroll reveal animation
   useEffect(() => {
-    // Scroll reveal animation
     const items = document.querySelectorAll(".reveal");
+
     const revealOnScroll = () => {
       items.forEach((el: any) => {
         const y = el.getBoundingClientRect().top;
-        if (y < window.innerHeight * 0.85) el.classList.add("active");
+        if (y < window.innerHeight * 0.85) {
+          el.classList.add("active");
+        }
       });
     };
+
     window.addEventListener("scroll", revealOnScroll);
     revealOnScroll();
   }, []);
 
   return (
-    <div className="relative min-h-screen text-white overflow-hidden">
+    <div className="relative min-h-screen text-white overflow-hidden p-10">
 
       {/* Galaxy Background */}
-      <canvas id="galaxy-summarizer" className="absolute inset-0 z-0"></canvas>
+      <canvas id="galaxy-summarizer" className="absolute inset-0 z-0 pointer-events-none"></canvas>
 
       {/* Aurora Background */}
-      <div className="absolute inset-0 bg-[conic-gradient(at_top_left,_#ff00cc,_#3333ff,_#00eaff)] opacity-20 blur-[180px]"></div>
-
+      <div className="absolute inset-0 bg-[conic-gradient(at_top_left,_#ff00cc,_#3333ff,_#00eaff)] opacity-20 blur-[180px] pointer-events-none"></div>
 
       {/* PAGE TITLE */}
-      <h1 className="text-4xl font-bold mb-10 reveal opacity-0 translate-y-10 transition-all duration-700">
+      <h1 className="text-4xl font-bold mb-10 reveal opacity-0 translate-y-10 transition-all duration-700 relative z-10">
         AI Summarizer
       </h1>
 
-      <div className="grid lg:grid-cols-2 gap-10">
+      <div className="grid lg:grid-cols-2 gap-10 relative z-10">
 
         {/* INPUT SECTION */}
         <div className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl reveal opacity-0 translate-y-10 transition-all duration-700">
-
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
             <FileText className="w-6 h-6" />
             Enter Text or Upload File
@@ -61,7 +63,7 @@ export default function SummarizerPage() {
           />
 
           <button
-            onClick={() => setSummary("This is an example summary. (Hook up backend)")}
+            onClick={() => setSummary("This is an example summary. (Hook backend)")}
             className="mt-6 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 font-semibold flex items-center gap-2"
           >
             <Sparkles className="w-5 h-5" />
@@ -69,10 +71,8 @@ export default function SummarizerPage() {
           </button>
         </div>
 
-
         {/* OUTPUT SECTION */}
         <div className="p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl reveal opacity-0 translate-y-10 transition-all duration-700 delay-200">
-
           <h2 className="text-2xl font-semibold mb-6">Summary Output</h2>
 
           <div className="min-h-[250px] p-4 rounded-xl bg-white/10 border border-white/10">
@@ -89,7 +89,6 @@ export default function SummarizerPage() {
             </button>
           )}
         </div>
-
       </div>
     </div>
   );

@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { useSignUp } from "@clerk/nextjs";
+import { useState, useEffect } from "react";
+import { useSignUp, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
   const router = useRouter();
   const { isLoaded, signUp, setActive } = useSignUp();
+  const { isSignedIn } = useUser();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +15,11 @@ export default function RegisterPage() {
   const [verificationCode, setVerificationCode] = useState("");
   const [error, setError] = useState("");
 
-  // Handle Google Sign Up
+  // 🚨 If user is already logged in → skip register screen
+  useEffect(() => {
+    if (isSignedIn) router.replace("/dashboard");
+  }, [isSignedIn, router]);
+
   const handleGoogleSignup = async () => {
     if (!isLoaded) return;
 
@@ -25,17 +30,12 @@ export default function RegisterPage() {
     });
   };
 
-  // Handle email/password sign up
   const handleSignup = async (e: any) => {
     e.preventDefault();
     if (!isLoaded) return;
 
     try {
-      await signUp.create({
-        emailAddress: email,
-        password,
-      });
-
+      await signUp.create({ emailAddress: email, password });
       await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
       setCodeSent(true);
     } catch (err: any) {
@@ -43,7 +43,6 @@ export default function RegisterPage() {
     }
   };
 
-  // Handle verification code
   const handleVerification = async (e: any) => {
     e.preventDefault();
     if (!isLoaded) return;
@@ -78,13 +77,12 @@ export default function RegisterPage() {
       <div className="relative z-10 flex min-h-screen items-center justify-center p-4">
         <div className="w-full max-w-md rounded-2xl bg-white/10 backdrop-blur-xl p-8 shadow-2xl border border-white/20">
 
-          {/* Header */}
           <h2 className="text-3xl font-bold text-center mb-3">Create an Account</h2>
           <p className="text-center text-gray-300 mb-8">
             Get started with Texcio AI Suite
           </p>
 
-          {/* GOOGLE BUTTON */}
+          {/* Google Signup */}
           <button
             onClick={handleGoogleSignup}
             className="w-full flex items-center justify-center gap-2 bg-white text-black py-3 rounded-xl font-medium hover:bg-gray-200 transition mb-6"
@@ -104,7 +102,7 @@ export default function RegisterPage() {
             <div className="h-px flex-1 bg-white/20"></div>
           </div>
 
-          {/* If code is not sent: show email/password */}
+          {/* Email + Password form (before code) */}
           {!codeSent && (
             <form onSubmit={handleSignup} className="space-y-5">
               <div>
@@ -129,9 +127,7 @@ export default function RegisterPage() {
                 />
               </div>
 
-              {error && (
-                <p className="text-red-400 text-sm text-center">{error}</p>
-              )}
+              {error && <p className="text-red-400 text-sm text-center">{error}</p>}
 
               <button
                 type="submit"
@@ -142,7 +138,7 @@ export default function RegisterPage() {
             </form>
           )}
 
-          {/* If code is sent: show verification form */}
+          {/* Verification form (after code) */}
           {codeSent && (
             <form onSubmit={handleVerification} className="space-y-5">
               <p className="text-center text-gray-300">
@@ -158,9 +154,7 @@ export default function RegisterPage() {
                 onChange={(e) => setVerificationCode(e.target.value)}
               />
 
-              {error && (
-                <p className="text-red-400 text-sm text-center">{error}</p>
-              )}
+              {error && <p className="text-red-400 text-sm text-center">{error}</p>}
 
               <button
                 type="submit"
@@ -171,13 +165,9 @@ export default function RegisterPage() {
             </form>
           )}
 
-          {/* Footer */}
           <p className="text-center text-gray-300 mt-6">
             Already have an account?{" "}
-            <a
-              href="/login"
-              className="text-blue-400 hover:text-blue-300 transition"
-            >
+            <a href="/login" className="text-blue-400 hover:text-blue-300 transition">
               Sign In
             </a>
           </p>

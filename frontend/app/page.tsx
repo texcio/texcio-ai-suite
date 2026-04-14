@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#030014] text-white relative overflow-hidden">
 
-      {/* 🔥 Aurora / Galaxy Background */}
+      {/* Aurora / Galaxy Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,120,255,.25),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,0,200,.25),transparent_50%)] blur-3xl"></div>
 
-      {/* 🔥 Navbar */}
+      {/* Navbar */}
       <nav className="w-full fixed top-0 bg-black/30 backdrop-blur-xl border-b border-white/10 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Image src="/logo.png" width={120} height={80} alt="Logo" />
@@ -44,7 +44,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* 🔥 Hero Section */}
+      {/* Hero Section */}
       <section className="pt-40 pb-28 relative max-w-7xl mx-auto px-6 text-center">
         <h1 className="text-6xl md:text-7xl font-extrabold leading-tight">
           AI Tools That{" "}
@@ -55,7 +55,7 @@ export default function Home() {
         </h1>
 
         <p className="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-          Transform your workflow with enterprise-grade AI — summaries, images, agents,
+          Transform your workflow with enterprise-grade AI summaries, images, agents,
           automations, and more.
         </p>
 
@@ -80,7 +80,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🔥 Stats */}
+      {/* Stats */}
       <section className="py-20 bg-black/20 backdrop-blur-xl border-y border-white/10">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
           <Stat value="10k+" label="Active Users" />
@@ -90,7 +90,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🔥 Features */}
+      {/* Features */}
       <section id="features" className="py-20">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-center text-4xl font-bold mb-4">Powerful AI Modules</h2>
@@ -109,7 +109,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🔥 Pricing */}
+      {/* Pricing */}
       <section id="pricing" className="py-24 bg-black/20 backdrop-blur-xl border-y border-white/10">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-center text-4xl font-bold mb-4">Flexible Pricing</h2>
@@ -123,8 +123,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🔥 Workflow */}
-      {/* 🔥 Workflow */}
+      {/* Workflow */}
+      {/* Workflow */}
 <section id="workflow" className="py-28 relative overflow-hidden bg-gradient-to-b from-[#030014] via-[#14002b] to-[#030014]">
   <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(90,0,255,0.45),transparent_60%),radial-gradient(circle_at_80%_90%,rgba(255,0,140,0.45),transparent_60%)] opacity-40 blur-2xl"></div>
 
@@ -159,7 +159,7 @@ export default function Home() {
 </section>
 
 
-      {/* 🔥 Footer */}
+      {/* Footer */}
       <Footer />
     </div>
   );

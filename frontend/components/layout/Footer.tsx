@@ -9,7 +9,7 @@ export default function Footer() {
     <div>
       <img src="/logo.png" alt="logo" className="h-12 mb-4 opacity-90" />
       <p className="text-gray-400 text-sm leading-relaxed">
-        AI tools that supercharge productivity — summaries, images, agents & automation for business teams.
+        AI tools that supercharge productivity summaries, images, agents & automation for business teams.
       </p>
     </div>
 

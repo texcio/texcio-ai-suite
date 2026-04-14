@@ -1,57 +1,62 @@
-import {
-  Home,
-  ImageIcon,
-  FileText,
-  Bot,
-  Settings,
-  CreditCard,
-  User,
-} from "lucide-react";
+"use client";
+
 import Link from "next/link";
-import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { FiHome, FiUser, FiSettings, FiImage, FiCpu, FiBookOpen } from "react-icons/fi";
+
+const menuItems = [
+  { name: "Dashboard", href: "/dashboard", icon: FiHome },
+  { name: "Summarizer", href: "/dashboard/summarizer", icon: FiBookOpen },
+  { name: "Image Generator", href: "/dashboard/image", icon: FiImage },
+  { name: "AI Agents", href: "/dashboard/agents", icon: FiCpu },
+  { name: "Profile", href: "/dashboard/profile", icon: FiUser },
+  { name: "Settings", href: "/dashboard/settings", icon: FiSettings },
+];
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
-    <aside className="w-64 h-screen bg-white border-r p-4 flex flex-col">
-      <div className="flex items-center gap-2 mb-6">
-        <Image 
-          src="/logo.png"
-          alt="Texcio AI Suite"
-          width={140}
-          height={40}
-          priority
-        />
-      </div>
+    <div className="h-screen flex flex-col gap-2 p-5 bg-neutral-950 text-white">
+      
+        <div className="flex items-center justify-center py-6">
+  <img
+    src="/logo.png"
+    alt="Texcio AI Suite"
+    className="w-[150px] h-auto object-contain"
+  />
+</div>
+      
 
-      <nav className="flex-1 space-y-2">
-        <Link href="/dashboard" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-md">
-          <Home size={18} /> Dashboard
-        </Link>
+      <nav className="flex flex-col gap-1">
+        {menuItems.map((item) => {
+          const isActive = pathname === item.href;
+          const Icon = item.icon;
 
-        <Link href="/summarizer" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-md">
-          <FileText size={18} /> Summarizer
-        </Link>
-
-        <Link href="/image" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-md">
-          <ImageIcon size={18} /> Image Generator
-        </Link>
-
-        <Link href="/agents" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-md">
-          <Bot size={18} /> Agents
-        </Link>
-
-        <Link href="/settings" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-md">
-          <Settings size={18} /> Settings
-        </Link>
-
-        <Link href="/billing" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-md">
-          <CreditCard size={18} /> Billing
-        </Link>
-
-        <Link href="/profile" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-md">
-          <User size={18} /> Profile
-        </Link>
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`
+                flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium
+                transition-all duration-200
+                ${isActive
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "text-white/70 hover:text-white hover:bg-white/10"
+                }
+              `}
+            >
+              <Icon size={18} />
+              {item.name}
+            </Link>
+          );
+        })}
       </nav>
-    </aside>
+
+      {/* Bottom section */}
+      <div className="mt-auto pt-5 border-t border-white/10">
+        <p className="text-xs text-white/40 text-center">© 2025 Texcio</p>
+      </div>
+    </div>
   );
 }
