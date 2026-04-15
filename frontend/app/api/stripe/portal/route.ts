@@ -11,15 +11,15 @@ export async function POST(req: Request) {
 
     const user = await prisma.user.findUnique({
       where: { id: userId },
-      include: { Subscription: true },
+      include: { subscription: true },
     });
 
-    if (!user || !user.Subscription?.stripeCustomerId) {
+    if (!user || !user.subscription?.stripeCustomerId) {
       return NextResponse.json({ error: "User has no Stripe customer ID" }, { status: 400 });
     }
 
     const portalSession = await stripe.billingPortal.sessions.create({
-      customer: user.Subscription.stripeCustomerId,
+      customer: user.subscription.stripeCustomerId,
       return_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/billing`,
     });
 
